@@ -1,5 +1,8 @@
 const webpack = require('webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+
 
 module.exports = {
   entry: {
@@ -7,7 +10,7 @@ module.exports = {
     vendor: ['moment']
   },
   output: {
-    filename: 'bundle.js',
+    filename: 'bundle.[chunkhash].js',
     path: './dist/assets',
     publicPath: '/assets'
   },
@@ -34,8 +37,15 @@ module.exports = {
         comments: false
       }
     }),
-    new ExtractTextPlugin("bundle.css"),
-    new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */"vendor.bundle.js")
+    new ExtractTextPlugin("bundle.[chunkhash].css"),
+    new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */"vendor.bundle.[chunkhash].js"),
+    new HtmlWebpackPlugin({
+      template: 'index.html',
+      filename: '../index.html'
+    }),
+    new CleanWebpackPlugin(['dist/assets'], {
+      root: process.cwd()
+    })
   ],
   postcss: function() {
     return [
