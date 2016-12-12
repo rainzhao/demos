@@ -9,11 +9,6 @@ module.exports = {
     ],
     resolve: {
       extensions: ['', '.js']
-    },
-    postcss: function() {
-      return [
-        require('autoprefixer')({browsers: ['last 2 versions', 'iOS 7']})
-      ]
     }
   }
 };
