@@ -2,9 +2,11 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const webpackMerge = require('webpack-merge');
 
+const base = require('./base');
 
-module.exports = {
+module.exports = webpackMerge(base, {
   entry: {
     app: './src/index.js',
     vendor: ['moment']
@@ -16,11 +18,6 @@ module.exports = {
   },
   module: {
     loaders: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loaders: ['babel']
-      },
       {
         test: /\.scss$/,
         exclude: /node_modules/,
@@ -48,14 +45,8 @@ module.exports = {
     })
   ],
   resolve: {
-    extensions: ['', '.js'],
     alias: {
       config: '../src/config/production'
     }
-  },
-  postcss: function() {
-    return [
-      require('autoprefixer')({browsers: ['last 2 versions', 'iOS 7']})
-    ]
   }
-};
+});

@@ -1,20 +1,18 @@
 const webpack = require('webpack');
+const webpackMerge = require('webpack-merge');
 
-module.exports = {
+const base = require('./base');
+
+
+module.exports = webpackMerge(base, {
   entry: './src/index.js',
   output: {
     filename: 'bundle.js',
-    path: './dist/assets',
     publicPath: '/assets'
   },
   devtool: 'eval-source-map',
   module: {
     loaders: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loaders: ['babel']
-      },
       {
         test: /\.scss$/,
         exclude: /node_modules/,
@@ -26,14 +24,8 @@ module.exports = {
 
   ],
   resolve: {
-    extensions: ['', '.js'],
     alias: {
       config: '../src/config/dev'
     }
-  },
-  postcss: function() {
-    return [
-      require('autoprefixer')({browsers: ['last 2 versions', 'iOS 7']})
-    ]
   }
-};
+});
