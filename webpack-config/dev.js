@@ -25,6 +25,12 @@ module.exports = {
   plugins: [
 
   ],
+  resolve: {
+    extensions: ['', '.js'],
+    alias: {
+      config: '../src/config/dev'
+    }
+  },
   postcss: function() {
     return [
       require('autoprefixer')({browsers: ['last 2 versions', 'iOS 7']})
