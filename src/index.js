@@ -1,8 +1,12 @@
-import './app.scss'
+import './index.scss'
 
-import greeting from './greeting'
-import config from 'config'
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import router from "./router/router";
 
-console.log(config);
+Vue.use(VueRouter);
 
-greeting();
+new Vue({
+  el: '#app',
+  router
+});

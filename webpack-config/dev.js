@@ -8,7 +8,7 @@ module.exports = webpackMerge(base, {
   entry: './src/index.js',
   output: {
     filename: 'bundle.js',
-    publicPath: '/assets'
+    publicPath: '/assets/'
   },
   devtool: 'eval-source-map',
   module: {
@@ -25,7 +25,10 @@ module.exports = webpackMerge(base, {
   ],
   resolve: {
     alias: {
-      config: '../src/config/dev'
+      config: __dirname + '/../src/config/dev',
+      vue: 'vue/dist/vue',
+      router:  __dirname + '/../src/router',
+      img:  __dirname + '/../src/img'
     }
   }
 });

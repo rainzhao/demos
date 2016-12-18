@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "NODE_ENV=dev webpack-dev-server --inline --hot",
+    "start": "NODE_ENV=dev webpack-dev-server --inline --hot --history-api-fallback",
     "build": "NODE_ENV=production webpack",
     "serve-dist": "npm run build && http-server ./dist -p 8888"
   },
@@ -17,19 +17,26 @@
     "babel-preset-stage-2": "^6.18.0",
     "clean-webpack-plugin": "^0.1.14",
     "css-loader": "^0.26.1",
+    "express": "^4.14.0",
     "extract-text-webpack-plugin": "^1.0.1",
+    "html-loader": "^0.4.4",
     "html-webpack-plugin": "^2.24.1",
     "http-server": "^0.9.0",
+    "image-webpack-loader": "^3.1.0",
     "moment": "^2.17.1",
     "node-sass": "^3.13.1",
+    "nodemon": "^1.11.0",
     "postcss-loader": "^1.2.0",
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
+    "superstatic": "^4.0.3",
     "webpack": "^1.14.0",
     "webpack-dev-server": "^1.16.2",
     "webpack-merge": "^1.1.1"
   },
   "dependencies": {
-    "lodash": "^4.17.2"
+    "lodash": "^4.17.2",
+    "vue": "^2.1.6",
+    "vue-router": "^2.1.1"
   }
 }
