@@ -1,12 +1,31 @@
 import VueRouter from 'vue-router'
-import Dash from 'router/dash.js'
+import Dash from 'router/dash'
+import Home from 'router/home'
+import Tree from 'router/tree'
+import NotFound from 'router/not-found/not-found'
 
 export default new VueRouter({
-  // mode: 'history',
+  mode: 'history',
   routes: [
     {
-      path: '/dash',
-      component: Dash
+      path: '/',
+      component: Dash,
+      children: [
+        {
+          name: 'home',
+          path: '',
+          component: Home
+        },
+        {
+          name: 'tree',
+          path: 'tree',
+          component: Tree
+        }
+      ]
+    },
+    {
+      path: '*',
+      component: NotFound
     }
   ]
 })
