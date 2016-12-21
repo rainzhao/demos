@@ -1,20 +1,41 @@
 import {isEmpty} from "../../../service/util";
 import Vue from 'vue'
 
-const Tree = Vue.component('tree', {
-  template: require('./tree.html'),
-  props: ['data', 'parent'],
-  computed: {
-    items: function() {
-      let {data, parent} = this;
-      return data.filter(item => {
-        if (isEmpty(parent)) {
-          return isEmpty(item.parentId);
-        }
-        return item.parentId === parent.id;
-      })
-    }
+const treeBus = new Vue();
+
+Vue.component('tree-nodes', {
+  template: require('./tree-nodes.html'),
+  props: {
+    nodes: Array
   },
+  computed: {
+
+  },
+  methods: {
+    add: function() {
+      treeBus.$emit('add')
+    },
+    update: function(node) {
+    },
+    remove: function(node) {
+    }
+  }
 });
 
-export default Tree;
+export default {
+  template: `
+    <div>
+      <tree-nodes :nodes="data"/>
+    </div>
+  `,
+  props: {
+    data: Array
+  },
+
+  created: function() {
+    treeBus.$on('add', () => {
+      this.$emit('add')
+    })
+  }
+
+};

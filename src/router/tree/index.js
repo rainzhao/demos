@@ -1,41 +1,40 @@
 import './component/tree'
+import tree from './component/tree'
 
-const data = [
+const DATA = [
   {
     id: 1,
-    name: 'lv1: 1'
+    name: 1,
+    children: [
+      {
+        id: 11,
+        name: 11
+      }
+    ]
   },
   {
     id: 2,
-    name: 'lv1: 2'
-  },
-  {
-    id: 11,
-    parentId: 1,
-    name: 'lv2: 11'
-  },
-  {
-    id: 12,
-    parentId: 1,
-    name: 'lv2: 12'
-  },
-  {
-    parentId: 2,
-    id: 21,
-    name: 'lv2: 21'
-  },
-  {
-    id: 111,
-    parentId: 11,
-    name: 'lv3: 111'
+    name: 2
   }
 ];
 
 export default {
-  template: `<div>
-    <tree :data="data" />
-  </div>`,
-  data: () => ({
-    data
-  })
+  template: `
+    <div>
+      <tree :data="data" @add="addTreeNode"/>
+    </div>
+  `,
+  data: function() {
+    return {
+      data: DATA
+    }
+  },
+  methods: {
+    addTreeNode: function() {
+      console.log('add tree node');
+    }
+  },
+  components: {
+    tree
+  }
 }

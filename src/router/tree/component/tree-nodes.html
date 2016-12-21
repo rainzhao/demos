@@ -1,0 +1,14 @@
+<ul>
+  <li v-for="node in nodes">
+    <div>
+      <span>{{node.name}}</span>
+      <button @click="update(node)">~</button>
+      <button @click="remove(node)">×</button>
+    </div>
+    <tree-nodes :nodes="node.children" />
+  </li>
+  <li>
+    <button @click="add">+</button>
+  </li>
+</ul>
+
