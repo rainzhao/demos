@@ -17,3 +17,10 @@ export const isEmpty = (val) => {
 
   return false;
 };
+
+export const deepCopy = obj => {
+  if (typeof obj !== 'object') return obj;
+  console.log(obj);
+  console.log(JSON.stringify(obj));
+  return JSON.parse(JSON.stringify(obj));
+};
