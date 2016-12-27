@@ -1,3 +1,4 @@
+import './tree.scss'
 import {isEmpty} from "../../../service/util";
 import Vue from 'vue'
 
@@ -9,9 +10,6 @@ Vue.component('tree-nodes', {
     nodes: Array,
     parent: Object
   },
-  computed: {
-
-  },
   methods: {
     add: function() {
       treeBus.$emit('add', this.parent)
@@ -21,13 +19,18 @@ Vue.component('tree-nodes', {
     },
     remove: function(node) {
       treeBus.$emit('remove', node, this.parent);
+    },
+
+    handleItemNameClick: function(node) {
+      node.$toggleExpand();
+      this.$forceUpdate();
     }
   }
 });
 
 export default {
   template: `
-    <div>
+    <div class="tree-01">
       <tree-nodes :nodes="nodes" :parent="root"/>
     </div>
   `,
@@ -36,7 +39,21 @@ export default {
   },
   methods: {
     enhanceNode: function(node) {
-      if (!node.children) return;
+
+      let oldNode = treeBus.oldFlattenedData.find(oldNode => oldNode.id === node.id);
+
+      node.$hasChildren = function () {
+        return !isEmpty(node.children)
+      };
+
+      node.$expand = oldNode && oldNode.$expand ||  false;
+
+      node.$toggleExpand = function(expand) {
+        this.$expand = isEmpty(expand) ? !this.$expand : expand;
+      };
+
+      if (!node.$hasChildren()) return;
+
       node.children.map(subNode => {
         subNode.$parent = node;
         this.enhanceNode(subNode);
@@ -60,12 +77,12 @@ export default {
     nodes: function() {
       this.enhanceNode(this.root);
       return this.data;
-    },
-    flattenedData: function() {
-      return this.flattenNode(this.root);
     }
   },
   created: function() {
+
+    treeBus.oldFlattenedData = this.flattenNode(this.root);
+
     treeBus.$on('add', (parent) => {
       this.$emit('add', parent);
     });
@@ -75,6 +92,8 @@ export default {
     treeBus.$on('remove', (node, parent) => {
       this.$emit('remove', node, parent);
     });
+  },
+  beforeUpdate: function () {
+    treeBus.oldFlattenedData = this.flattenNode(this.root);
   }
-
 };

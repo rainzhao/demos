@@ -3,7 +3,34 @@ import tree from './component/tree'
 import {isEmpty, deepCopy} from "../../service/util";
 
 let DATA = [
-
+  {
+    id: 1,
+    name: 1,
+    children: [
+      {
+        id: 11,
+        name: 11,
+      },
+      {
+        id: 12,
+        name: 12
+      }
+    ]
+  },
+  {
+    id: 2,
+    name: 2,
+    children: [
+      {
+        id: 21,
+        name: 21
+      },
+      {
+        id: 22,
+        name: 22
+      }
+    ]
+  }
 ];
 
 export default {
