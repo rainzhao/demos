@@ -4,14 +4,16 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "NODE_ENV=dev webpack-dev-server --inline --hot --history-api-fallback",
-    "build": "NODE_ENV=production webpack",
+    "start": "set NODE_ENV=dev&&webpack-dev-server --inline --hot --history-api-fallback",
+    "build": "set NODE_ENV=production&&webpack",
     "serve-dist": "npm run build && http-server ./dist -p 8888"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "autoprefixer": "^6.6.0",
+    "babel-core": "^6.21.0",
     "babel-loader": "^6.2.9",
     "babel-preset-latest": "^6.16.0",
     "babel-preset-stage-2": "^6.18.0",
@@ -24,7 +26,6 @@
     "image-webpack-loader": "^3.1.0",
     "moment": "^2.17.1",
     "node-sass": "^3.13.1",
-    "nodemon": "^1.11.0",
     "postcss-loader": "^1.2.0",
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",

@@ -13,8 +13,7 @@ module.exports = webpackMerge(base, {
   },
   output: {
     filename: 'bundle.[chunkhash].js',
-    path: './dist/assets',
-    publicPath: '/assets/'
+    path: './dist/assets'
   },
   module: {
     loaders: [
