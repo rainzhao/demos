@@ -6,7 +6,7 @@
   "scripts": {
     "start": "set NODE_ENV=dev&&webpack-dev-server --inline --hot --history-api-fallback",
     "build": "set NODE_ENV=production&&webpack",
-    "serve-dist": "npm run build && http-server ./dist -p 8888"
+    "serve-dist": "npm run build&&http-server ./dist -p 8888"
   },
   "keywords": [],
   "author": "",
