@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const base = require('./base');
 
@@ -7,8 +8,7 @@ const base = require('./base');
 module.exports = webpackMerge(base, {
   entry: './src/index.js',
   output: {
-    filename: 'bundle.js',
-    publicPath: '/assets/'
+    filename: 'bundle.js'
   },
   devtool: 'eval-source-map',
   module: {
@@ -21,7 +21,10 @@ module.exports = webpackMerge(base, {
     ]
   },
   plugins: [
-
+    new HtmlWebpackPlugin({
+      template: 'index.html',
+      favicon: 'favicon.ico'
+    }),
   ],
   resolve: {
     alias: {

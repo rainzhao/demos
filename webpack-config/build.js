@@ -37,7 +37,8 @@ module.exports = webpackMerge(base, {
     new webpack.optimize.CommonsChunkPlugin("vendor", "vendor.bundle.[chunkhash].js"),
     new HtmlWebpackPlugin({
       template: 'index.html',
-      filename: '../index.html'
+      favicon: 'favicon.ico',
+      filename: '../index.html',
     }),
     new CleanWebpackPlugin(['dist/assets'], {
       root: process.cwd()
