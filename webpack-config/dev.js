@@ -13,8 +13,8 @@ module.exports = webpackMerge(base, {
   devtool: 'eval-source-map',
   devServer: {
     inline: true,
-    // hot: true,
-    // historyApiFallback: true
+    hot: true,
+    historyApiFallback: true
   },
   module: {
     loaders: [
