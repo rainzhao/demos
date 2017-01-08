@@ -4,8 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "set NODE_ENV=dev && webpack-dev-server",
-    "build": "set NODE_ENV=production && webpack",
+    "start": "cross-env NODE_ENV=dev && webpack-dev-server",
+    "build": "cross-env NODE_ENV=production && webpack",
     "serve-dist": "npm run build && http-server ./dist -p 8888"
   },
   "keywords": [],
@@ -18,6 +18,7 @@
     "babel-preset-latest": "^6.16.0",
     "babel-preset-stage-2": "^6.18.0",
     "clean-webpack-plugin": "^0.1.14",
+    "cross-env": "^3.1.4",
     "css-loader": "^0.26.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
