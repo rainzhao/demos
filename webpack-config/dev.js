@@ -11,11 +11,6 @@ module.exports = webpackMerge(base, {
     filename: 'bundle.js'
   },
   devtool: 'eval-source-map',
-  devServer: {
-    inline: true,
-    hot: true,
-    historyApiFallback: true
-  },
   module: {
     loaders: [
       {

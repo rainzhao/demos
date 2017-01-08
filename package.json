@@ -4,8 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=dev && webpack-dev-server",
-    "build": "cross-env NODE_ENV=production && webpack",
+    "start": "cross-env NODE_ENV=dev webpack-dev-server --inline --hot --history-api-fallback",
+    "build": "cross-env NODE_ENV=production webpack",
     "serve-dist": "npm run build && http-server ./dist -p 8888"
   },
   "keywords": [],

@@ -9,7 +9,6 @@ console.log('~current node environment is ' + ENV);
 
 if ( ENV === 'dev') {
   comboModule = devModule;
-  console.log(comboModule);
 } else if ( ENV === 'production') {
   comboModule = buildModule
 }
