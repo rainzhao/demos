@@ -4,7 +4,8 @@ import Vue from 'vue'
 
 const treeBus = new Vue();
 
-Vue.component('tree-nodes', {
+const treeNodes = {
+  name: 'tree-nodes',
   template: require('./tree-nodes.html'),
   props: {
     nodes: Array,
@@ -26,7 +27,7 @@ Vue.component('tree-nodes', {
       this.$forceUpdate();
     }
   }
-});
+};
 
 export default {
   template: `
@@ -78,6 +79,9 @@ export default {
       this.enhanceNode(this.root);
       return this.data;
     }
+  },
+  components: {
+    treeNodes
   },
   created: function() {
 
