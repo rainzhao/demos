@@ -6,7 +6,7 @@
   "scripts": {
     "start": "cross-env NODE_ENV=dev webpack-dev-server --inline --hot --history-api-fallback",
     "build": "cross-env NODE_ENV=production webpack",
-    "serve-dist": "npm run build && http-server ./dist -p 8888"
+    "serve-dist": "npm run build && node dist-server"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +20,7 @@
     "clean-webpack-plugin": "^0.1.14",
     "cross-env": "^3.1.4",
     "css-loader": "^0.26.1",
+    "express": "^4.14.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
     "html-loader": "^0.4.4",

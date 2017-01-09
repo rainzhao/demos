@@ -13,7 +13,7 @@ module.exports = webpackMerge(base, {
   },
   output: {
     filename: 'bundle.[chunkhash].js',
-    path: './dist/assets'
+    path: './dist'
   },
   module: {
     loaders: [
@@ -38,7 +38,7 @@ module.exports = webpackMerge(base, {
     new HtmlWebpackPlugin({
       template: 'index.html',
       favicon: 'favicon.ico',
-      filename: '../index.html',
+      filename: 'index.html'
     }),
     new CleanWebpackPlugin(['dist/assets'], {
       root: process.cwd()
