@@ -1,5 +1,8 @@
 import './index.scss'
 
+import 'babel-polyfill'
+import 'whatwg-fetch'
+
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import router from "./router/router";
