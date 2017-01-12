@@ -1,14 +1,12 @@
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const base = require('./base');
 
 
 module.exports = webpackMerge(base, {
-  entry: './src/index.js',
   output: {
-    filename: 'bundle.js'
+    filename: '[name].bundle.js'
   },
   devtool: 'eval-source-map',
   module: {
@@ -20,18 +18,9 @@ module.exports = webpackMerge(base, {
       }
     ]
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: 'index.html',
-      favicon: 'favicon.ico'
-    }),
-  ],
   resolve: {
     alias: {
-      config: __dirname + '/../src/config/dev',
-      vue: 'vue/dist/vue',
-      router:  __dirname + '/../src/router',
-      img:  __dirname + '/../src/img'
+      config: './../src/dev.config.js',
     }
   }
 });
