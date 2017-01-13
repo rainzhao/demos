@@ -1,25 +1,51 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const demos = require('../demo-list');
+
+let entry = {
+  index: process.cwd() + '/src/index.js',
+};
+let plugins = [
+  new HtmlWebpackPlugin({
+    filename: 'index.html',
+    chunks: ['index'],
+    template: process.cwd() + '/src/index.html',
+    favicon: process.cwd() + '/src/favicon.ico'
+  })
+];
+demos.map(demo => {
+  entry[demo] = process.cwd() + '/src/' + demo + '/index.js';
+  plugins.push(new HtmlWebpackPlugin({
+    filename: demo + '/index.html',
+    chunks: [demo],
+    template: process.cwd() + '/src/' + demo + '/index.html'
+  }));
+});
+
 module.exports = {
-  entry: {
-    index: process.cwd() + '/src/index.js',
-    home: process.cwd() + '/src/home/index.js'
-  },
+  // entry: {
+  //   index: process.cwd() + '/src/index.js',
+  //   home: process.cwd() + '/src/home/index.js'
+  // },
+  entry: entry,
   resolve: {
     extensions: ['', '.js']
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: process.cwd() + '/src/index.html',
-      favicon: process.cwd() + '/src/favicon.ico'
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'home/index.html',
-      template: process.cwd() + '/src/home/index.html'
-    })
-  ],
+  // plugins: [
+  //   new HtmlWebpackPlugin({
+  //     filename: 'index.html',
+  //     chunks: ['index'],
+  //     template: process.cwd() + '/src/index.html',
+  //     favicon: process.cwd() + '/src/favicon.ico'
+  //   }),
+  //   new HtmlWebpackPlugin({
+  //     filename: 'home/index.html',
+  //     chunks: ['home'],
+  //     template: process.cwd() + '/src/home/index.html'
+  //   })
+  // ],
+  plugins: plugins,
   module: {
     loaders: [
       {
