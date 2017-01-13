@@ -8,12 +8,12 @@ const base = require('./base');
 
 module.exports = webpackMerge(base, {
   entry: {
-    app: './src/index.js',
+    app: process.cwd() + '/src/index.js',
     vendor: ['moment']
   },
   output: {
     filename: 'bundle.[chunkhash].js',
-    path: './dist'
+    path: process.cwd() + '/dist'
   },
   module: {
     loaders: [
@@ -35,21 +35,13 @@ module.exports = webpackMerge(base, {
     }),
     new ExtractTextPlugin("bundle.[chunkhash].css"),
     new webpack.optimize.CommonsChunkPlugin("vendor", "vendor.bundle.[chunkhash].js"),
-    new HtmlWebpackPlugin({
-      template: 'index.html',
-      favicon: 'favicon.ico',
-      filename: 'index.html'
-    }),
-    new CleanWebpackPlugin(['dist/assets'], {
+    new CleanWebpackPlugin(['dist'], {
       root: process.cwd()
     })
   ],
   resolve: {
     alias: {
-      config: __dirname + '/../src/config/prod',
-      vue: 'vue/dist/vue',
-      router:  __dirname + '/../src/router',
-      img:  __dirname + '/../src/img'
+      config: './../src/config/prod'
     }
   }
 });

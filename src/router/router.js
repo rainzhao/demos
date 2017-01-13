@@ -1,8 +1,8 @@
 import VueRouter from 'vue-router'
-import Dash from 'router/dash'
-import Home from 'router/home'
-import Tree from 'router/tree'
-import NotFound from 'router/not-found/not-found'
+import Dash from './dash'
+import Home from './home'
+import Tree from './tree'
+import NotFound from './not-found'
 
 export default new VueRouter({
   mode: 'history',

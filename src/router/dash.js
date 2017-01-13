@@ -1,8 +1,8 @@
 import './dash.scss'
 
-import img from 'img/vue.png';
+// import img from 'img/vue.png';
 
-console.log(img);
+// console.log(img);
 
 export default {
   template: require('./dash.html')

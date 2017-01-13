@@ -1,3 +1,5 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
   module: {
     loaders: [
@@ -19,9 +21,21 @@ module.exports = {
           'url?limit=10000&hash=sha512&digest=hex&name=img/[hash].[ext]'
         ]
       }
-    ],
-    resolve: {
-      extensions: ['', '.js']
+    ]
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: process.cwd() + '/index.html',
+      filename: 'index.html',
+      favicon: 'favicon.ico'
+    }),
+  ],
+  resolve: {
+    extensions: ['', '.js'],
+    alias: {
+      vue: 'vue/dist/vue',
+      router:  './../src/router',
+      img:  './../src/img'
     }
   }
 };
