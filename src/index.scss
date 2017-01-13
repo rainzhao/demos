@@ -1,0 +1,33 @@
+@import "reset";
+@import "mixin";
+
+$headerHeight: 40px;
+$asideWidth: 200px;
+
+.app {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+  &__header {
+    background: teal;
+    width: 100%;
+    height: $headerHeight;
+  }
+  &__aside {
+    background: rosybrown;
+    width: $asideWidth;
+    height: calc(100% - #{$headerHeight})
+  }
+  &__main {
+    background: orange;
+    flex: 1;
+    height: calc(100% - #{$headerHeight})
+  }
+}
+
+@include for-phone-only {
+  .app {
+    min-height: 520px;
+  }
+}

@@ -30,7 +30,10 @@ module.exports = {
   // },
   entry: entry,
   resolve: {
-    extensions: ['', '.js']
+    extensions: ['', '.js'],
+    alias: {
+      src: './../src'
+    }
   },
   // plugins: [
   //   new HtmlWebpackPlugin({
