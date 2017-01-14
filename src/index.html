@@ -8,20 +8,37 @@
   <title>Demos</title>
 </head>
 <body>
-  <div class="app">
-    <header class="app__header">
-      Demos
-    </header>
-    <aside class="app__aside">
-      <nav>
-        <ul>
-          <li>home</li>
-        </ul>
-      </nav>
+  <div id="app" class="app-container">
+
+    <aside class="app-container__aside app-aside"
+           :class="{
+            'app-container__aside--hide-on-desktop': hideAppAsideOnDesktop,
+            'app-container__aside--show-on-mobile': showAppAsideOnMobile
+           }"
+           @click="toggleAppAside(false)">
+      <div class="app-aside__content">
+        <nav>
+          <ul>
+            <li>home</li>
+          </ul>
+        </nav>
+      </div>
     </aside>
-    <main class="app__main">
-      <iframe src="/home"></iframe>
+
+    <main class="app-container__main app-main">
+
+      <header class="app-main__header">
+        <span @click="toggleAppAside()">
+          菜单
+        </span>
+      </header>
+
+      <article class="app-main__article">
+        <iframe src="/home"></iframe>
+      </article>
+
     </main>
   </div>
+  <script src="//cdn.bootcss.com/vue/2.1.8/vue.min.js"></script>
 </body>
 </html>
