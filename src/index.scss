@@ -12,19 +12,18 @@ $asideWidth: 200px;
 
   &__aside {
     width: $asideWidth;
-    //background: teal;
-    overflow: scroll;
     transition: width .3s, transform .3s;
+    overflow: hidden;
     &--hide-on-desktop {
       width: 0;
       transform: translate3d(-100%, 0, 0);
-      overflow-x: hidden;
     }
   }
 
   &__main {
     flex: 1;
     //background: tan;
+    //border-left: 1px solid red;
   }
 }
 
@@ -46,7 +45,6 @@ $asideWidth: 200px;
 
       /* reset --hide-on-desktop */
       width: $asideWidth !important;
-      overflow: auto !important;
       transition: transform .3s;
       /**/
 

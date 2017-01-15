@@ -15,5 +15,10 @@ new Vue({
       this.hideAppAsideOnDesktop = !this.hideAppAsideOnDesktop;
       this.showAppAsideOnMobile = !this.showAppAsideOnMobile;
     }
+  },
+  computed: {
+    iframeSrc: function () {
+      return location.origin + location.pathname + 'home' + '/';
+    }
   }
 });
