@@ -27,10 +27,12 @@
 
     <main class="app-container__main app-main">
 
-      <header class="app-main__header">
-        <span @click="toggleAppAside()">
-          菜单
-        </span>
+      <header class="app-main__header app-header">
+        <span class="app-header__menu-trigger"
+              :class="{
+                'app-header__menu-trigger--arrow': !hideAppAsideOnDesktop
+              }"
+              @click="toggleAppAside()"></span>
       </header>
 
       <article class="app-main__article">
