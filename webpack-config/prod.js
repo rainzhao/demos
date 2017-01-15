@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpackMerge = require('webpack-merge');
 const path = require('path');
@@ -17,7 +17,7 @@ module.exports = webpackMerge(base, {
       {
         test: /\.scss$/,
         exclude: /node_modules/,
-        loader: ExtractTextPlugin.extract('style', 'css!postcss!sass')    //将css从cs中独立出来
+        loader: ExtractTextPlugin.extract('style', 'css!postcss!sass')    //将css从js中独立出来
       }
     ]
   },
@@ -30,7 +30,7 @@ module.exports = webpackMerge(base, {
         comments: false
       }
     }),
-    new ExtractTextPlugin("bundle.[chunkhash].css"),
+    new ExtractTextPlugin("[name]/bundle.[chunkhash].css"),
     // new webpack.optimize.CommonsChunkPlugin("vendor", "vendor.bundle.[chunkhash].js"),
 
     new CleanWebpackPlugin(['dist'], {

@@ -1,5 +1,5 @@
 const devModule = require('./webpack-config/dev');
-const buildModule = require('./webpack-config/build');
+const prodModule = require('./webpack-config/prod');
 
 let comboModule = {};
 
@@ -10,7 +10,7 @@ console.log('~current node environment is ' + ENV);
 if ( ENV === 'dev') {
   comboModule = devModule;
 } else if ( ENV === 'prod') {
-  comboModule = buildModule
+  comboModule = prodModule
 }
 
 module.exports = comboModule;
