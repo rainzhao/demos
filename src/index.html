@@ -19,7 +19,7 @@
       <div class="app-aside__content">
         <nav>
           <ul>
-            <li>home</li>
+            <li v-for="i in 100">home</li>
           </ul>
         </nav>
       </div>
@@ -28,11 +28,13 @@
     <main class="app-container__main app-main">
 
       <header class="app-main__header app-header">
-        <span class="app-header__menu-trigger"
+        <div class="app-header__menu-trigger"
               :class="{
                 'app-header__menu-trigger--arrow': !hideAppAsideOnDesktop
               }"
-              @click="toggleAppAside()"></span>
+              @click="toggleAppAside()">
+          <span></span>
+        </div>
       </header>
 
       <article class="app-main__article">
