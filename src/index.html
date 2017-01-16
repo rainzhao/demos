@@ -23,7 +23,9 @@
         </div>
         <nav class="side-nav">
           <ul>
-            <li v-for="i in 100">home</li>
+            <li v-for="demo in demoList">
+              <a :href="'#/' + demo.entry">{{demo.title}}</a>
+            </li>
           </ul>
         </nav>
       </div>
@@ -40,20 +42,20 @@
           <span></span>
         </div>
         <div class="app-header__title">
-          <h4>home</h4>
+          <h4>{{demo && demo.title}}</h4>
         </div>
         <div>
           <a href="https://github.com/mlxiao93/demos" target="_blank" class="app-header__link">
             <i class="fa fa-github"></i>
           </a>
-          <a href="home" class="app-header__link">
+          <a :href="demoSrc" class="app-header__link">
             <i class="fa fa-expand"></i>
           </a>
         </div>
       </header>
 
       <article class="app-main__article">
-        <iframe :src="iframeSrc"></iframe>
+        <iframe :src="demoSrc"></iframe>
       </article>
 
     </main>

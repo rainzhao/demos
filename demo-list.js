@@ -1,3 +1,10 @@
 module.exports = [
-  'home'
+  {
+    entry: 'introduce',
+    title: 'introduce'
+  },
+  {
+    entry: 'home',
+    title: 'home'
+  },
 ];

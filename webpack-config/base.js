@@ -15,11 +15,11 @@ let plugins = [
   })
 ];
 demos.map(demo => {
-  entry[demo] = process.cwd() + '/src/' + demo + '/index.js';
+  entry[demo.entry] = process.cwd() + '/src/' + demo.entry + '/index.js';
   plugins.push(new HtmlWebpackPlugin({
-    filename: demo + '/index.html',
-    chunks: [demo],
-    template: process.cwd() + '/src/' + demo + '/index.html'
+    filename: demo.entry + '/index.html',
+    chunks: [demo.entry],
+    template: process.cwd() + '/src/' + demo.entry + '/index.html'
   }));
 });
 
