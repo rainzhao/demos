@@ -9,7 +9,8 @@ new Vue({
     showAppAsideOnMobile: false,
     demoList: demoList,
     activeDemo: null,
-    iframeLoading: false
+    iframeLoading: false,
+    keywords: ''
   },
   methods: {
     toggleAppAside: function(value) {
@@ -32,6 +33,9 @@ new Vue({
     _findDemo: function() {
       let entry = location.hash.replace('#/', '');
       this.activeDemo = demoList.find(demo => demo.entry === entry) || demoList[0];
+    },
+    clearKeywords: function() {
+      this.keywords = '';
     }
   },
   computed: {
