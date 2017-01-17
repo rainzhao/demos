@@ -7,7 +7,8 @@ new Vue({
     hideAppAsideOnDesktop: false,
     showAppAsideOnMobile: false,
     demoList: demoList,
-    demo: null
+    demo: null,
+    iframeLoading: false
   },
   methods: {
     toggleAppAside: function(value) {
@@ -18,23 +19,30 @@ new Vue({
       this.hideAppAsideOnDesktop = !this.hideAppAsideOnDesktop;
       this.showAppAsideOnMobile = !this.showAppAsideOnMobile;
     },
-    _locateIframe: function() {
+    iframeOnload: function() {
+      this.iframeLoading = false;
+    },
+    _findDemo: function() {
+      this.iframeLoading = true;
       let entry = location.hash.replace('#/', '');
       this.demo = demoList.find(demo => demo.entry === entry) || demoList[0];
     }
   },
   computed: {
     demoSrc: function() {
-      let entry = this.demo && this.demo.entry || '#';
+      let entry = this.demo && this.demo.entry;
+      if (!entry) {
+        return '';
+      }
       return location.origin + location.pathname + entry + '/';
     }
   },
   created: function() {
     window.onload = () => {
-      this._locateIframe();
+      this._findDemo();
     };
     window.onhashchange = () => {
-      this._locateIframe();
+      this._findDemo();
     }
   }
 });

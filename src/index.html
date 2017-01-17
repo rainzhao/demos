@@ -22,9 +22,9 @@
           <input type="text" placeholder="搜索">
         </div>
         <nav class="side-nav">
-          <ul>
-            <li v-for="demo in demoList">
-              <a :href="'#/' + demo.entry">{{demo.title}}</a>
+          <ul class="side-nav__list">
+            <li class="side-nav__item" v-for="demo in demoList">
+              <a class="side-nav__link" :href="'#/' + demo.entry">{{demo.title}}</a>
             </li>
           </ul>
         </nav>
@@ -42,7 +42,10 @@
           <span></span>
         </div>
         <div class="app-header__title">
-          <h4>{{demo && demo.title}}</h4>
+          <h4>
+            {{demo && demo.title}}
+            <i v-show="iframeLoading" class="app-header__loading-spinner"></i>
+          </h4>
         </div>
         <div>
           <a href="https://github.com/mlxiao93/demos" target="_blank" class="app-header__link">
@@ -55,7 +58,7 @@
       </header>
 
       <article class="app-main__article">
-        <iframe :src="demoSrc"></iframe>
+        <iframe @load="iframeOnload" :src="demoSrc"></iframe>
       </article>
 
     </main>
