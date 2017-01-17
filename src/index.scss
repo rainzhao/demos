@@ -1,5 +1,6 @@
 @import "reset";
 @import "mixin";
+@import "nicescroll";
 
 $headerHeight: 46px;
 $asideWidth: 240px;
@@ -36,6 +37,8 @@ $asideTransitionDuration: .3s;
     overflow-y: scroll;
     overflow-x: hidden;
     border-right: 1px solid rgba(0, 0, 0, .07);
+
+    @extend .ml-nice-scroll;
   }
 }
 
@@ -53,6 +56,9 @@ $asideTransitionDuration: .3s;
     text-decoration: none;
     &:hover {
       text-decoration: underline;
+    }
+    &--active {
+      color: #42b983;
     }
   }
 }
@@ -137,9 +143,16 @@ $asideTransitionDuration: .3s;
 
   &__title {
     flex: 1;
+    display: flex;
     text-align: center;
+    justify-content: center;
+    align-items: center;
     color: #444;
     padding: 0 1em;
+    h4 {
+      position: relative;
+      min-height: 1em;
+    };
   }
 
   @keyframes loading {
@@ -162,11 +175,12 @@ $asideTransitionDuration: .3s;
   }
 
   &__loading-spinner {
-    margin: 0 6px;
-    margin-top: 3px;
+    margin: 0;
+    right: -1.1em;
+    top: 3px;
+    position: absolute;
     animation: loading 2s infinite linear;
     color: #ccc;
-    position: absolute;
     display: inline-block;
     width: .5em;
     height: .5em;
@@ -183,7 +197,7 @@ $asideTransitionDuration: .3s;
       color: #444;
     }
     &:not(:last-child) {
-      margin-right: 1em;
+      margin-right: .6em;
     }
   }
 }

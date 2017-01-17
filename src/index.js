@@ -1,4 +1,5 @@
 import './index.scss'
+import 'babel-polyfill'
 import demoList from '../demo-list'
 
 new Vue({
@@ -7,7 +8,7 @@ new Vue({
     hideAppAsideOnDesktop: false,
     showAppAsideOnMobile: false,
     demoList: demoList,
-    demo: null,
+    activeDemo: null,
     iframeLoading: false
   },
   methods: {
@@ -22,18 +23,25 @@ new Vue({
     iframeOnload: function() {
       this.iframeLoading = false;
     },
+    isDemoActived: function(demo) {
+      if (!demo) return false;
+      if (!this.activeDemo) return false;
+      if (demo.entry !== this.activeDemo.entry) return false;
+      return true;
+    },
     _findDemo: function() {
-      this.iframeLoading = true;
       let entry = location.hash.replace('#/', '');
-      this.demo = demoList.find(demo => demo.entry === entry) || demoList[0];
+      this.activeDemo = demoList.find(demo => demo.entry === entry) || demoList[0];
     }
   },
   computed: {
     demoSrc: function() {
-      let entry = this.demo && this.demo.entry;
+      let entry = this.activeDemo && this.activeDemo.entry;
       if (!entry) {
+        this.iframeLoading = false;
         return '';
       }
+      this.iframeLoading = true;
       return location.origin + location.pathname + entry + '/';
     }
   },

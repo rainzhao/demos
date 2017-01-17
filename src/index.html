@@ -24,7 +24,11 @@
         <nav class="side-nav">
           <ul class="side-nav__list">
             <li class="side-nav__item" v-for="demo in demoList">
-              <a class="side-nav__link" :href="'#/' + demo.entry">{{demo.title}}</a>
+              <a class="side-nav__link"
+                 :class="{
+                   'side-nav__link--active': isDemoActived(demo)
+                 }"
+                 :href="'#/' + demo.entry">{{demo.title}}</a>
             </li>
           </ul>
         </nav>
@@ -43,7 +47,7 @@
         </div>
         <div class="app-header__title">
           <h4>
-            {{demo && demo.title}}
+            {{activeDemo && activeDemo.title}}
             <i v-show="iframeLoading" class="app-header__loading-spinner"></i>
           </h4>
         </div>
