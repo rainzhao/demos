@@ -48,6 +48,13 @@ $asideTransitionDuration: .3s;
     padding: 0;
     padding-top: .5rem;
   }
+  &__item-group {
+    padding: .5rem .5rem .5rem .5rem;
+    color: #7f8c8d;
+    opacity: .6;
+    font-size: .8rem;
+    cursor: not-allowed;
+  }
   &__item {
     padding: .5rem 1rem;
   }

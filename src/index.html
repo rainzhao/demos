@@ -23,13 +23,18 @@
         </div>
         <nav class="side-nav">
           <ul class="side-nav__list">
-            <li class="side-nav__item" v-for="demo in demoList">
-              <a class="side-nav__link"
-                 :class="{
-                   'side-nav__link--active': isDemoActived(demo)
-                 }"
-                 :href="'#/' + demo.entry">{{demo.title}}</a>
-            </li>
+            <template v-for="demo in navList">
+              <li v-if="demo.isGroup" class="side-nav__item-group">
+                {{demo.title}}
+              </li>
+              <li v-else class="side-nav__item">
+                <a class="side-nav__link"
+                   :class="{
+                     'side-nav__link--active': isDemoActived(demo)
+                   }"
+                   :href="'#/' + demo.entry">{{demo.title}}</a>
+              </li>
+            </template>
           </ul>
         </nav>
       </div>

@@ -43,6 +43,20 @@ new Vue({
       }
       this.iframeLoading = true;
       return location.origin + location.pathname + entry + '/';
+    },
+    navList: function() {
+      let list = [];
+      this.demoList.map(item => {
+        let group = item.group;
+        if (group && !list.find(item => item.isGroup && item.title === group)) {
+          list.push({
+            isGroup: true,
+            title: group
+          });
+        }
+        list.push(item);
+      });
+      return list;
     }
   },
   created: function() {
